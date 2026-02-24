@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: orange-client:latest
+          image: ghcr.io/hmdyt/orange-client:latest
           ports:
             - containerPort: 80
           resources:

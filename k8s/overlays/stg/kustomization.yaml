@@ -5,7 +5,7 @@ resources:
 patches:
   - path: patches.yaml
 images:
-  - name: orange-server
+  - name: ghcr.io/hmdyt/orange-server
     newTag: stg-latest
-  - name: orange-client
+  - name: ghcr.io/hmdyt/orange-client
     newTag: stg-latest
