@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: orange
+spec:
+  ingressClassName: cloudflare-tunnel
+  rules:
+    - host: orange.yhmd.dev
+      http:
+        paths:
+          - path: /game.v1.GameService/
+            pathType: Prefix
+            backend:
+              service:
+                name: server
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: client
+                port:
+                  number: 80

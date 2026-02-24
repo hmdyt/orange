@@ -1,0 +1,17 @@
+syntax = "proto3";
+package game.v1;
+option go_package = "github.com/hmdyt/orange/gen/game/v1;gamev1";
+
+service GameService {
+  rpc Login(LoginRequest) returns (LoginResponse);
+}
+
+message LoginRequest {
+  string name = 1;
+}
+
+message LoginResponse {
+  string user_id = 1;
+  string name = 2;
+  string message = 3;
+}

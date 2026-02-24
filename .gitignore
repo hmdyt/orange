@@ -1,1 +1,3 @@
 .direnv
+static/client.wasm
+static/wasm_exec.js

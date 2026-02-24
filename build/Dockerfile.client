@@ -1,0 +1,12 @@
+FROM golang:1.24 AS builder
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN GOOS=js GOARCH=wasm go build -o /client.wasm ./cmd/client
+RUN cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" /wasm_exec.js
+
+FROM nginx:alpine
+COPY --from=builder /client.wasm /usr/share/nginx/html/
+COPY --from=builder /wasm_exec.js /usr/share/nginx/html/
+COPY static/index.html /usr/share/nginx/html/
